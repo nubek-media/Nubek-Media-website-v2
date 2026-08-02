@@ -1,56 +1,52 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Marquee() {
+  const items = [
+    "Brand Strategy",
+    "Creative Design",
+    "Social Media",
+    "Production",
+    "Motion Graphics",
+    "Digital Experiences",
+    "Marketing",
+  ];
+
   return (
-    <section className="overflow-hidden border-y border-[#A48C45]/20 bg-[#021D26] py-6">
-      <div className="flex whitespace-nowrap animate-marquee">
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Branding
-        </span>
+    <section className="overflow-hidden border-y border-[#A48C45]/20 bg-[#021D26] py-7">
 
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Strategy
-        </span>
+      <motion.div
+        className="flex whitespace-nowrap"
+        animate={{
+          x: ["0%", "-50%"],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      >
 
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Creative
-        </span>
+        {[...items, ...items].map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center"
+          >
 
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Production
-        </span>
+            <span className="mx-8 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
+              {item}
+            </span>
 
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Motion
-        </span>
+            <span className="text-[#A48C45]/40">
+              ✦
+            </span>
 
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Digital
-        </span>
+          </div>
+        ))}
 
-        {/* تكرار علشان الحركة تبقى مستمرة */}
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Branding
-        </span>
+      </motion.div>
 
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Strategy
-        </span>
-
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Creative
-        </span>
-
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Production
-        </span>
-
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Motion
-        </span>
-
-        <span className="mx-6 text-xl font-semibold uppercase tracking-[0.35em] text-[#A48C45]">
-          Digital
-        </span>
-      </div>
     </section>
   );
 }
