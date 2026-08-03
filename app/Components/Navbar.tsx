@@ -9,27 +9,27 @@ export default function Navbar() {
 
   const links = [
     {
-      name: "Work",
+      name: "WORK",
       href: "#work",
     },
     {
-      name: "Expertise",
+      name: "EXPERTISE",
       href: "#expertise",
     },
     {
-      name: "Industries",
+      name: "INDUSTRIES",
       href: "#industries",
     },
     {
-      name: "Process",
+      name: "PROCESS",
       href: "#process",
     },
     {
-      name: "Team",
+      name: "TEAM",
       href: "#team",
     },
     {
-      name: "Contact",
+      name: "CONTACT",
       href: "#contact",
     },
   ];
@@ -41,60 +41,52 @@ export default function Navbar() {
       transition={{ duration: 0.7 }}
       className="absolute left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-6 md:px-10"
     >
+      {/* Logo */}
 
       <motion.div
         whileHover={{
-          scale: 1.05,
+          scale: 1.03,
+        }}
+        transition={{
+          duration: 0.3,
         }}
       >
         <Image
           src="/logos/logo.png"
           alt="Nubek Media"
-          width={280}
-          height={100}
+          width={300}
+          height={110}
           priority
-          className="h-auto w-[190px] md:w-[260px]"
+          className="h-auto w-[210px] md:w-[285px]"
         />
       </motion.div>
 
-
       {/* Desktop Navigation */}
 
-      <div className="hidden items-center gap-8 text-sm text-white md:flex">
-
+      <div className="hidden items-center gap-10 md:flex">
         {links.map((link) => (
-
           <a
             key={link.name}
             href={link.href}
-            className="transition duration-300 hover:text-[#A48C45]"
+            className="text-[11px] font-medium uppercase tracking-[0.25em] text-white transition-all duration-300 hover:text-[#A48C45]"
           >
             {link.name}
           </a>
-
         ))}
-
       </div>
-
-
 
       {/* Mobile Button */}
 
       <button
         onClick={() => setOpen(!open)}
-        className="text-2xl text-white md:hidden"
+        className="text-2xl text-white transition-colors duration-300 hover:text-[#A48C45] md:hidden"
       >
-
         {open ? "✕" : "☰"}
-
       </button>
-
-
 
       {/* Mobile Navigation */}
 
       {open && (
-
         <motion.div
           initial={{
             opacity: 0,
@@ -107,26 +99,20 @@ export default function Navbar() {
           transition={{
             duration: 0.3,
           }}
-          className="absolute left-0 top-full z-50 flex w-full flex-col gap-6 border-t border-[#A48C45]/20 bg-[#021D26] px-6 py-8 text-white md:hidden"
+          className="absolute left-0 top-full z-50 flex w-full flex-col gap-7 border-t border-[#A48C45]/20 bg-[#021D26] px-6 py-8 text-white md:hidden"
         >
-
           {links.map((link) => (
-
             <a
               key={link.name}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="transition hover:text-[#A48C45]"
+              className="text-sm font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:text-[#A48C45]"
             >
               {link.name}
             </a>
-
           ))}
-
         </motion.div>
-
       )}
-
     </motion.nav>
   );
 }
