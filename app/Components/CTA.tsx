@@ -94,7 +94,7 @@ export default function CTA() {
             text-[#021D26]
             "
           >
-            Let's Talk
+            Be Our New Partner
           </motion.button>
 
 

@@ -1,8 +1,27 @@
 "use client";
 
+import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
+import {
+  ArrowUp,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+} from "lucide-react";
+
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+} from "react-icons/fa6";
+
+
 export default function Footer() {
+  const [email, setEmail] = useState("");
+
   const links = [
     "Work",
     "Expertise",
@@ -12,109 +31,276 @@ export default function Footer() {
     "Contact",
   ];
 
-  const address =
-    "Villa 434 Z - First Gate Khufu Pyramids Gardens - Giza - Egypt";
 
-  const mapLink =
-    "https://www.google.com/maps/search/?api=1&query=Villa+434+Z+First+Gate+Khufu+Pyramids+Gardens+Giza+Egypt";
+  const socialLinks = [
+    {
+      name: "Facebook",
+      icon: FaFacebookF,
+      link: "https://www.facebook.com/NubekMedia/",
+    },
+    {
+      name: "Instagram",
+      icon: FaInstagram,
+      link: "https://www.instagram.com/nubekmedia/",
+    },
+    {
+      name: "TikTok",
+      icon: FaTiktok,
+      link: "https://www.tiktok.com/@nubekmedia",
+    },
+  ];
+
+
+  const address =
+    "Villa 434 Z - First Gate Khufu Pyramids Gardens - Giza, Egypt";
+
 
   return (
-    <footer className="border-t border-[#A48C45]/20 bg-[#021D26] px-6 py-16">
-      <div className="mx-auto max-w-7xl">
+    <footer className="bg-[#021D26] text-white">
 
-        <div className="grid gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+
+
+        <div className="grid gap-12 md:grid-cols-4">
+
 
           {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-[#A48C45]">
-              NUBEK
-            </h2>
 
-            <p className="mt-5 max-w-sm leading-7 text-gray-300">
-              Creative advertising agency building brands through strategy,
-              creativity, and digital experiences.
+          <div>
+
+            <h3 className="mb-5 text-2xl font-semibold text-[#A48C45]">
+              Nubek Media
+            </h3>
+
+
+            <p className="text-sm leading-7 text-gray-300">
+              Creative minds. Strategic impact.
+              We create powerful digital experiences
+              through branding, marketing, and technology.
             </p>
-          </motion.div>
+
+
+            <div className="mt-6 flex gap-3">
+
+              {socialLinks.map((social) => {
+
+                const Icon = social.icon;
+
+                return (
+
+                  <a
+                    key={social.name}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[#A48C45] transition hover:bg-[#A48C45] hover:text-[#021D26]"
+                  >
+
+                    <Icon size={18} />
+
+                  </a>
+
+                );
+
+              })}
+
+            </div>
+
+
+          </div>
+
 
 
           {/* Navigation */}
-          <div>
-            <h3 className="text-lg font-semibold text-white">
-              Explore
-            </h3>
 
-            <div className="mt-5 flex flex-col gap-3">
-              {links.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  className="text-gray-300 transition hover:text-[#A48C45]"
-                >
-                  {link}
-                </a>
+          <div>
+
+            <h4 className="mb-5 text-lg font-semibold text-[#A48C45]">
+              Navigation
+            </h4>
+
+
+            <ul className="space-y-3">
+
+              {links.map((item) => (
+
+                <li key={item}>
+
+                  <Link
+                    href="#"
+                    className="text-sm text-gray-300 transition hover:text-[#A48C45]"
+                  >
+                    {item}
+                  </Link>
+
+                </li>
+
               ))}
-            </div>
+
+            </ul>
+
           </div>
+
+
 
 
           {/* Contact */}
+
           <div>
-            <h3 className="text-lg font-semibold text-white">
+
+            <h4 className="mb-5 text-lg font-semibold text-[#A48C45]">
               Contact
-            </h3>
-
-            <div className="mt-5 space-y-4 text-gray-300">
-
-              <a
-                href={mapLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block leading-7 transition hover:text-[#A48C45]"
-              >
-                {address}
-              </a>
+            </h4>
 
 
-              <a
-                href="mailto:hello@nubekmedia.com"
-                className="block transition hover:text-[#A48C45]"
-              >
-                hello@nubekmedia.com
-              </a>
+            <ul className="space-y-4 text-sm text-gray-300">
 
 
-              <a
-                href="tel:01272222655"
-                className="block transition hover:text-[#A48C45]"
-              >
-                01272222655
-              </a>
+              <li className="flex gap-3">
+
+                <MapPin
+                  size={18}
+                  className="shrink-0 text-[#A48C45]"
+                />
+
+                <span>
+                  {address}
+                </span>
+
+              </li>
 
 
-              <a
-                href={mapLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-full border border-[#A48C45] px-5 py-2 text-sm text-[#A48C45] transition hover:bg-[#A48C45] hover:text-[#021D26]"
-              >
-                Open Location Map
-              </a>
 
-            </div>
+              <li className="flex gap-3">
+
+                <Phone
+                  size={18}
+                  className="text-[#A48C45]"
+                />
+
+                <span>
+                  +20 000 000 0000
+                </span>
+
+              </li>
+
+
+
+              <li className="flex gap-3">
+
+                <Mail
+                  size={18}
+                  className="text-[#A48C45]"
+                />
+
+                <span>
+                  info@nubekmedia.com
+                </span>
+
+              </li>
+
+
+            </ul>
+
+
           </div>
 
+
+
+
+
+          {/* Newsletter */}
+
+          <div>
+
+
+            <h4 className="mb-5 text-lg font-semibold text-[#A48C45]">
+              Newsletter
+            </h4>
+
+
+            <p className="mb-5 text-sm text-gray-300">
+              Subscribe for updates and creative insights.
+            </p>
+
+
+
+            <div className="flex overflow-hidden rounded-md border border-[#A48C45]">
+
+
+              <input
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-transparent px-4 py-3 text-sm outline-none"
+              />
+
+
+              <button
+                className="flex items-center justify-center bg-[#A48C45] px-4 text-[#021D26]"
+              >
+
+                <Send size={18} />
+
+              </button>
+
+
+            </div>
+
+
+          </div>
+
+
+
         </div>
 
 
-        <div className="mt-16 border-t border-[#A48C45]/20 pt-8 text-sm text-gray-400">
-          © {new Date().getFullYear()} NUBEK Media. All rights reserved.
+
+
+
+        {/* Bottom */}
+
+        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 text-sm text-gray-400 md:flex-row">
+
+
+          <p>
+            © {new Date().getFullYear()} Nubek Media. All rights reserved.
+          </p>
+
+
+
+          <motion.button
+
+            whileHover={{ y: -5 }}
+
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })
+            }
+
+            className="mt-4 flex items-center gap-2 text-[#A48C45] md:mt-0"
+
+          >
+
+            Back to top
+
+            <ArrowUp size={16} />
+
+          </motion.button>
+
+
+
         </div>
+
+
 
       </div>
+
+
     </footer>
   );
 }
