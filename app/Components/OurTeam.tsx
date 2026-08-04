@@ -37,7 +37,7 @@ const teamMembers = [
   {
     name: "Ahmed Hesham",
     role: "Marketing Manager",
-    image: "/images/team/Ahmed hesham.png",
+    image: "/images/team/ahmed-hesham.png",
   },
 ];
 
