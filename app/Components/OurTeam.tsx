@@ -35,9 +35,9 @@ const teamMembers = [
     image: "/images/team/nada-el-baqer.jpg",
   },
   {
-    name: "Ahmed Hesham",
+    name: "Ahmed  Hesham",
     role: "Marketing Manager",
-    image: "/images/team/Ahmed hesham.png",
+    image: "/images/team/Ahmed-hesham.png",
   },
 ];
 
