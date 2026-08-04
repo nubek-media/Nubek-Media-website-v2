@@ -25,11 +25,11 @@ export default function Stats() {
   ];
 
   return (
-    <section className="bg-[#021D26] py-24">
+    <section className="-mt-10 bg-[#021D26] pb-16 pt-10 md:-mt-16 md:pb-20 md:pt-12">
 
       <Container>
 
-        <div className="grid grid-cols-1 gap-10 border-y border-[#A48C45]/20 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-y-10 gap-x-6 border-y border-[#A48C45]/20 py-8 md:grid-cols-4 md:gap-8 md:py-10">
 
           {stats.map((item, index) => (
 
@@ -37,7 +37,7 @@ export default function Stats() {
               key={item.label}
               initial={{
                 opacity: 0,
-                y: 30,
+                y: 25,
               }}
               whileInView={{
                 opacity: 1,
@@ -47,19 +47,21 @@ export default function Stats() {
                 once: true,
               }}
               transition={{
-                duration: 0.6,
-                delay: index * 0.1,
+                duration: 0.5,
+                delay: index * 0.08,
               }}
-              className="text-center lg:text-left"
+              className="text-center md:text-left"
             >
 
-              <h3 className="text-5xl font-bold text-white">
+              <h3 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
                 {item.number}
               </h3>
 
-              <p className="mt-3 text-sm uppercase tracking-[0.25em] text-[#A48C45]">
+
+              <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[#A48C45] sm:text-xs md:text-sm md:tracking-[0.22em]">
                 {item.label}
               </p>
+
 
             </motion.div>
 

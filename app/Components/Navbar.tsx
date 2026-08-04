@@ -9,10 +9,6 @@ export default function Navbar() {
 
   const links = [
     {
-      name: "WORK",
-      href: "#work",
-    },
-    {
       name: "EXPERTISE",
       href: "#expertise",
     },
@@ -34,13 +30,39 @@ export default function Navbar() {
     },
   ];
 
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+
+    const section = document.querySelector(href);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+
+    setOpen(false);
+  };
+
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
+      initial={{
+        opacity: 0,
+        y: -30,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.7,
+      }}
       className="absolute left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-6 md:px-10"
     >
+
       {/* Logo */}
 
       <motion.div
@@ -61,32 +83,42 @@ export default function Navbar() {
         />
       </motion.div>
 
+
       {/* Desktop Navigation */}
 
       <div className="hidden items-center gap-10 md:flex">
+
         {links.map((link) => (
+
           <a
             key={link.name}
             href={link.href}
-            className="text-[11px] font-medium uppercase tracking-[0.25em] text-white transition-all duration-300 hover:text-[#A48C45]"
+            onClick={(e) => handleClick(e, link.href)}
+            className="text-sm font-medium uppercase tracking-[0.22em] text-white transition-all duration-300 hover:text-[#A48C45]"
           >
             {link.name}
           </a>
+
         ))}
+
       </div>
+
 
       {/* Mobile Button */}
 
       <button
         onClick={() => setOpen(!open)}
+        aria-label="Toggle menu"
         className="text-2xl text-white transition-colors duration-300 hover:text-[#A48C45] md:hidden"
       >
         {open ? "✕" : "☰"}
       </button>
 
+
       {/* Mobile Navigation */}
 
       {open && (
+
         <motion.div
           initial={{
             opacity: 0,
@@ -101,18 +133,24 @@ export default function Navbar() {
           }}
           className="absolute left-0 top-full z-50 flex w-full flex-col gap-7 border-t border-[#A48C45]/20 bg-[#021D26] px-6 py-8 text-white md:hidden"
         >
+
           {links.map((link) => (
+
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setOpen(false)}
-              className="text-sm font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:text-[#A48C45]"
+              onClick={(e) => handleClick(e, link.href)}
+              className="text-base font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:text-[#A48C45]"
             >
               {link.name}
             </a>
+
           ))}
+
         </motion.div>
+
       )}
+
     </motion.nav>
   );
 }

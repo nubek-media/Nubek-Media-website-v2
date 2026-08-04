@@ -24,8 +24,6 @@ export default function Home() {
 
       <Expertise />
 
-      <CaseStudies />
-
       <Industries />
 
       <Process />

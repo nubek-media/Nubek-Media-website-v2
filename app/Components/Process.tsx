@@ -6,9 +6,9 @@ export default function Process() {
   const steps = [
     {
       number: "01",
-      title: "Discover",
+      title: "Audit",
       description:
-        "We understand your brand, audience, challenges, and objectives through research and insights.",
+        "We defined your brand, audience, challenges, and objectives through research and insights.",
     },
     {
       number: "02",
