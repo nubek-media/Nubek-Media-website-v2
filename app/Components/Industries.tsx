@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 export default function Industries() {
   const industries = [
     {
-      title: "Banking & Finance",
+      title: "News Paper & Media",
       description:
         "Building trust and credibility through strategic communication.",
     },
     {
-      title: "Real Estate",
+      title: "Personal Branding",
       description:
         "Creating campaigns that turn properties into valuable experiences.",
     },
