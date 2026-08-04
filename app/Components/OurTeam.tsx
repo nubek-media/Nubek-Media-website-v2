@@ -34,11 +34,6 @@ const teamMembers = [
     role: "Creative Director",
     image: "/images/team/nada-el-baqer.jpg",
   },
-  {
-    name: "Ahmed Hesham",
-    role: "Marketing Manager",
-    image: "/images/team/ahmed-hesham.png",
-  },
 ];
 
 export default function OurTeam() {
