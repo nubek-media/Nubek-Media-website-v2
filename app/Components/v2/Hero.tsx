@@ -10,8 +10,7 @@ export default function Hero() {
   const [start, setStart] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setStart(true), 300);
-
+    const timer = setTimeout(() => setStart(true), 250);
     return () => clearTimeout(timer);
   }, []);
 
@@ -25,103 +24,97 @@ export default function Hero() {
         text-[#F5F5F3]
       "
     >
-
       {/* =====================================================
-          CINEMATIC GOLDEN LIGHT
-          A soft photographic light spill — not a graphic shape.
-      ====================================================== */}
+          GOLDEN CINEMATIC LIGHT
+      ===================================================== */}
 
       <motion.div
         initial={{
           opacity: 0,
-          scale: 0.55,
-          x: 80,
-          y: -20,
+          scale: 0.65,
+          x: 90,
         }}
         animate={{
           opacity: start ? 1 : 0,
-          scale: start ? 1 : 0.55,
-          x: start ? 0 : 80,
-          y: start ? 0 : -20,
+          scale: start ? 1 : 0.65,
+          x: start ? 0 : 90,
         }}
         transition={{
-          duration: 1.8,
+          duration: 1.7,
           ease,
         }}
         className="
           pointer-events-none
           absolute
-          right-[-8%]
-          top-[8%]
           z-0
 
-          h-[420px]
-          w-[420px]
+          right-[-18%]
+          top-[8%]
+
+          h-[430px]
+          w-[430px]
 
           rounded-full
+          bg-[#A48C45]/[0.12]
+          blur-[110px]
 
-          bg-[#A48C45]/[0.14]
+          sm:right-[-8%]
+          sm:top-[5%]
+          sm:h-[560px]
+          sm:w-[560px]
 
-          blur-[100px]
-
-          sm:h-[520px]
-          sm:w-[520px]
-
-          lg:right-[3%]
-          lg:top-[4%]
+          lg:right-[0%]
+          lg:top-[2%]
           lg:h-[650px]
           lg:w-[650px]
-
-          lg:blur-[130px]
+          lg:blur-[135px]
         "
       />
-
-      {/* Secondary softer light */}
 
       <motion.div
         initial={{
           opacity: 0,
-          scale: 0.7,
+          scale: 0.6,
         }}
         animate={{
-          opacity: start ? 0.65 : 0,
-          scale: start ? 1 : 0.7,
+          opacity: start ? 0.55 : 0,
+          scale: start ? 1 : 0.6,
         }}
         transition={{
-          delay: 0.25,
+          delay: 0.2,
           duration: 1.5,
           ease,
         }}
         className="
           pointer-events-none
           absolute
-          right-[14%]
-          top-[19%]
           z-0
 
-          h-[160px]
-          w-[160px]
+          right-[16%]
+          top-[18%]
+
+          h-[180px]
+          w-[180px]
 
           rounded-full
-          bg-[#C7AD67]/[0.09]
+          bg-[#C7AD67]/[0.07]
+          blur-[80px]
 
-          blur-[70px]
-
-          lg:h-[230px]
-          lg:w-[230px]
+          lg:h-[260px]
+          lg:w-[260px]
         "
       />
 
-
       {/* =====================================================
-          HERO CONTENT
-      ====================================================== */}
+          MAIN CONTAINER
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
           mx-auto
+
           flex
           min-h-[calc(100svh-72px)]
           max-w-[1440px]
@@ -129,75 +122,93 @@ export default function Hero() {
           justify-center
 
           px-5
-          pb-20
-          pt-16
+          pb-24
+          pt-20
 
           sm:px-10
+          sm:pb-24
+          sm:pt-20
 
           lg:px-16
+          lg:pb-20
+          lg:pt-16
         "
       >
-
         {/* =================================================
-            EYEBROW
+            AGENCY LABEL
         ================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 15,
+            y: 12,
           }}
           animate={{
             opacity: start ? 1 : 0,
-            y: start ? 0 : 15,
+            y: start ? 0 : 12,
           }}
           transition={{
+            delay: 0.15,
             duration: 0.7,
             ease,
           }}
-          className="mb-8"
+          className="
+            relative
+            z-30
+            mb-7
+            flex
+            items-center
+            gap-3
+
+            sm:mb-8
+          "
         >
-          <div className="flex items-center gap-3">
+          <span
+            className="
+              h-[5px]
+              w-[5px]
+              shrink-0
+              rounded-full
+              bg-[#A48C45]
+            "
+          />
 
-            <span
-              className="
-                h-1.5
-                w-1.5
-                rounded-full
-                bg-[#A48C45]
-              "
-            />
+          <span
+            className="
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.28em]
+              text-white/40
 
-            <span
-              className="
-                text-[9px]
-                font-medium
-                uppercase
-                tracking-[0.32em]
-                text-white/40
-
-                sm:text-[10px]
-              "
-            >
-              Creative Advertising Agency
-            </span>
-
-          </div>
+              sm:text-[9px]
+              sm:tracking-[0.32em]
+            "
+          >
+            Creative Advertising Agency
+          </span>
         </motion.div>
 
-
         {/* =================================================
-            MAIN TYPOGRAPHY
+            HERO TYPE
+
+            Desktop deliberately capped.
+            This prevents the typography from swallowing
+            the whole composition.
         ================================================== */}
 
         <div
           className="
             relative
             z-20
-            max-w-[1180px]
+
+            w-full
+            max-w-[1080px]
+
+            lg:max-w-[1040px]
+            xl:max-w-[1120px]
           "
         >
-
           <FocusLine
             text="MAKE"
             active={start}
@@ -207,78 +218,79 @@ export default function Hero() {
           <FocusLine
             text="THE"
             active={start}
-            delay={0.15}
+            delay={0.13}
             indent
           />
 
           <FocusLine
             text="UNSEEN"
             active={start}
-            delay={0.3}
+            delay={0.26}
             gold
           />
 
           <FocusLine
             text="SEEN."
             active={start}
-            delay={0.45}
+            delay={0.39}
             indent
           />
-
         </div>
 
-
         {/* =================================================
-            DESCRIPTION + CTA
+            LOWER CONTENT
         ================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 25,
+            y: 18,
           }}
           animate={{
             opacity: start ? 1 : 0,
-            y: start ? 0 : 25,
+            y: start ? 0 : 18,
           }}
           transition={{
-            delay: 1.05,
-            duration: 0.8,
+            delay: 0.95,
+            duration: 0.75,
             ease,
           }}
           className="
             relative
             z-20
 
-            mt-10
+            mt-9
 
             flex
             flex-col
-            gap-8
+            gap-7
 
-            sm:mt-12
-            sm:flex-row
-            sm:items-end
-            sm:justify-between
+            sm:mt-10
+
+            lg:mt-11
+            lg:flex-row
+            lg:items-end
+            lg:justify-between
           "
         >
-
           <p
             className="
-              max-w-[510px]
+              max-w-[460px]
 
-              text-[12px]
-              leading-[1.9]
-              text-white/45
+              text-[11px]
+              leading-[1.85]
+              text-white/42
 
-              sm:text-[13px]
+              sm:text-[12px]
+
+              lg:text-[13px]
+              lg:leading-[1.9]
             "
           >
             Creative strategy, branding, advertising and
-            digital experiences that turn overlooked
-            ideas into things people notice.
+            digital experiences that turn overlooked ideas
+            into things people notice.
           </p>
-
 
           <Link
             href="#work"
@@ -286,16 +298,17 @@ export default function Hero() {
               group
               flex
               w-fit
+              shrink-0
               items-center
               gap-4
 
-              text-[9px]
+              text-[8px]
               font-medium
               uppercase
               tracking-[0.25em]
+              text-white/75
             "
           >
-
             <span>
               Explore our work
             </span>
@@ -324,30 +337,25 @@ export default function Hero() {
             >
               ↗
             </span>
-
           </Link>
-
         </motion.div>
 
-
         {/* =================================================
-            BOTTOM INFORMATION
+            BOTTOM META
         ================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
+          initial={{ opacity: 0 }}
           animate={{
             opacity: start ? 1 : 0,
           }}
           transition={{
-            delay: 1.35,
+            delay: 1.25,
             duration: 0.7,
           }}
           className="
             absolute
-            bottom-6
+            bottom-5
             left-5
             right-5
 
@@ -362,14 +370,12 @@ export default function Hero() {
             lg:right-16
           "
         >
-
           <div className="flex flex-col gap-1">
-
             <span
               className="
-                text-[7px]
+                text-[6px]
                 uppercase
-                tracking-[0.3em]
+                tracking-[0.28em]
                 text-white/20
               "
             >
@@ -378,40 +384,35 @@ export default function Hero() {
 
             <span
               className="
-                text-[7px]
+                text-[6px]
                 uppercase
-                tracking-[0.2em]
+                tracking-[0.18em]
                 text-white/15
               "
             >
               Strategy / Creative / Digital
             </span>
-
           </div>
-
 
           <span
             className="
-              text-[7px]
+              text-[6px]
               uppercase
-              tracking-[0.3em]
+              tracking-[0.28em]
               text-white/20
             "
           >
             01 — 04
           </span>
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }
 
 
 /* ============================================================
-   CINEMATIC RACK-FOCUS TYPOGRAPHY
+   RACK-FOCUS TYPOGRAPHY
 ============================================================ */
 
 function FocusLine({
@@ -431,73 +432,68 @@ function FocusLine({
     <motion.div
       initial={{
         opacity: 0,
-
-        /*
-         * Starts as if the camera is too close.
-         */
-        scale: 1.18,
-        scaleX: 1.12,
-
-        /*
-         * Optical defocus.
-         */
-        filter: "blur(18px)",
-
-        /*
-         * Wide tracking while out of focus.
-         */
-        letterSpacing: "0.18em",
-
-        y: 45,
-        x: -18,
+        scale: 1.14,
+        scaleX: 1.08,
+        filter: "blur(17px)",
+        letterSpacing: "0.16em",
+        y: 34,
+        x: -14,
       }}
       animate={{
         opacity: active ? 1 : 0,
 
-        /*
-         * Pull back into the final composition.
-         */
-        scale: active ? 1 : 1.18,
-        scaleX: active ? 1 : 1.12,
+        scale: active ? 1 : 1.14,
+        scaleX: active ? 1 : 1.08,
 
-        /*
-         * Rack focus.
-         */
         filter: active
           ? "blur(0px)"
-          : "blur(18px)",
+          : "blur(17px)",
 
-        /*
-         * Letters close together as focus locks.
-         */
         letterSpacing: active
-          ? "-0.075em"
-          : "0.18em",
+          ? "-0.065em"
+          : "0.16em",
 
-        y: active ? 0 : 45,
-        x: active ? 0 : -18,
+        y: active ? 0 : 34,
+        x: active ? 0 : -14,
       }}
       transition={{
-        duration: 1.15,
+        duration: 1.05,
         delay,
         ease,
       }}
       className={`
         origin-left
-
-        text-[clamp(3.2rem,10.8vw,9.8rem)]
+        whitespace-nowrap
+        will-change-transform
 
         font-semibold
 
-        leading-[0.84]
+        leading-[0.86]
+        tracking-[-0.065em]
 
-        tracking-[-0.075em]
+        /*
+         * Mobile
+         */
+        text-[clamp(3rem,15vw,5.5rem)]
 
-        will-change-transform
+        /*
+         * Tablet
+         */
+        sm:text-[clamp(4.5rem,11vw,7rem)]
+
+        /*
+         * Desktop
+         */
+        lg:text-[clamp(5rem,7.1vw,7.1rem)]
+
+        /*
+         * Large desktop
+         */
+        xl:text-[clamp(5.4rem,6.7vw,7.6rem)]
 
         ${gold ? "text-[#A48C45]" : "text-[#F5F5F3]"}
 
-        ${indent ? "ml-[8vw]" : ""}
+        ${indent ? "ml-[7vw]" : ""}
       `}
     >
       {text}
