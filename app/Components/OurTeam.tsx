@@ -17,7 +17,7 @@ const teamMembers = [
   {
     name: "Hanaa Mohamed",
     role: "Managing Editor",
-    image: "/images/team/Hanaa Mohamed .png",
+    image: "/images/team/Hanaa-Mohamed .png",
   },
   {
     name: "Sherifa El-Sos",

@@ -21,46 +21,75 @@ export default function Marquee() {
   ];
 
   return (
-    <section className="overflow-hidden border-y border-white/10 bg-[#021D26] py-10">
-      <motion.div
-        className="flex w-max items-center"
-        animate={{
-          x: ["0%", "-50%"],
-        }}
-        transition={{
-          duration: 35,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        {[...partners, ...partners].map((logo, index) => {
-          const isSmallLogo = smallLogos.includes(logo);
+    <section className="relative overflow-hidden border-y border-white/[0.08] bg-[#021D26]">
 
-          return (
-            <div
-              key={index}
-              className="mx-14 flex items-center"
-            >
-              <div className="flex h-20 w-56 items-center justify-center overflow-visible">
-                <Image
-                  src={logo}
-                  alt={`Partner ${index + 1}`}
-                  width={220}
-                  height={80}
-                  priority
-                  className={
-                    isSmallLogo
-                      ? "max-h-16 max-w-[190px] scale-[1.35] object-contain opacity-75 transition-all duration-500 hover:scale-[1.45] hover:opacity-100"
-                      : "max-h-16 max-w-[190px] object-contain opacity-75 transition-all duration-500 hover:scale-105 hover:opacity-100"
-                  }
-                />
+      {/* Section label */}
+
+      <div className="flex items-center justify-between px-5 py-4 sm:px-8">
+
+        <span className="text-[8px] uppercase tracking-[0.22em] text-white/35">
+          Selected Partners
+        </span>
+
+        <span className="text-[8px] uppercase tracking-[0.22em] text-[#A48C45]/70">
+          01 — 06
+        </span>
+
+      </div>
+
+
+      {/* Moving logos */}
+
+      <div className="overflow-hidden border-t border-white/[0.06]">
+
+        <motion.div
+          className="flex w-max items-center py-5 sm:py-6"
+          animate={{
+            x: ["0%", "-50%"],
+          }}
+          transition={{
+            duration: 38,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+
+          {[...partners, ...partners].map((logo, index) => {
+
+            const isSmallLogo = smallLogos.includes(logo);
+
+            return (
+              <div
+                key={index}
+                className="flex items-center"
+              >
+
+                <div className="flex h-12 w-32 items-center justify-center px-4 sm:h-14 sm:w-40">
+
+                  <Image
+                    src={logo}
+                    alt={`Partner ${index + 1}`}
+                    width={160}
+                    height={60}
+                    className={
+                      isSmallLogo
+                        ? "max-h-9 max-w-[125px] scale-[1.15] object-contain opacity-55 transition-opacity duration-300 hover:opacity-100 sm:max-h-10"
+                        : "max-h-9 max-w-[125px] object-contain opacity-55 transition-opacity duration-300 hover:opacity-100 sm:max-h-10"
+                    }
+                  />
+
+                </div>
+
+                <div className="h-5 w-px bg-[#A48C45]/20" />
+
               </div>
+            );
+          })}
 
-              <div className="mx-14 h-8 w-px bg-[#A48C45]/30"></div>
-            </div>
-          );
-        })}
-      </motion.div>
+        </motion.div>
+
+      </div>
+
     </section>
   );
 }
