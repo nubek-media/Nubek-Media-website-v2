@@ -8,10 +8,13 @@ import Process from "./Components/Process";
 import OurTeam from "./Components/OurTeam";
 import CTA from "./Components/CTA";
 import Footer from "./Components/Footer";
+import CursorGlow from "./Components/CursorGlow";
 
 export default function Home() {
   return (
     <main className="bg-[#021D26]">
+      <CursorGlow />
+
       <Navbar />
 
       <Hero />
