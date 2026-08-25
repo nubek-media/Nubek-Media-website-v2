@@ -22,26 +22,9 @@ export default function Marquee() {
 
   return (
     <section className="relative overflow-hidden border-y border-white/[0.08] bg-[#021D26]">
-
-      {/* Section label */}
-
-      <div className="flex items-center justify-between px-5 py-4 sm:px-8">
-
-        <span className="text-[8px] uppercase tracking-[0.22em] text-white/35">
-          Selected Partners
-        </span>
-
-        <span className="text-[8px] uppercase tracking-[0.22em] text-[#A48C45]/70">
-          01 — 06
-        </span>
-
-      </div>
-
-
       {/* Moving logos */}
 
-      <div className="overflow-hidden border-t border-white/[0.06]">
-
+      <div className="overflow-hidden">
         <motion.div
           className="flex w-max items-center py-5 sm:py-6"
           animate={{
@@ -53,9 +36,7 @@ export default function Marquee() {
             ease: "linear",
           }}
         >
-
           {[...partners, ...partners].map((logo, index) => {
-
             const isSmallLogo = smallLogos.includes(logo);
 
             return (
@@ -63,9 +44,7 @@ export default function Marquee() {
                 key={index}
                 className="flex items-center"
               >
-
                 <div className="flex h-12 w-32 items-center justify-center px-4 sm:h-14 sm:w-40">
-
                   <Image
                     src={logo}
                     alt={`Partner ${index + 1}`}
@@ -77,19 +56,14 @@ export default function Marquee() {
                         : "max-h-9 max-w-[125px] object-contain opacity-55 transition-opacity duration-300 hover:opacity-100 sm:max-h-10"
                     }
                   />
-
                 </div>
 
                 <div className="h-5 w-px bg-[#A48C45]/20" />
-
               </div>
             );
           })}
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }

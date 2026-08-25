@@ -435,6 +435,8 @@ export default function Hero() {
             lg:right-16
           "
         >
+          {/* LEFT META */}
+
           <div className="flex flex-col gap-1">
             <span
               className="
@@ -459,16 +461,30 @@ export default function Hero() {
             </span>
           </div>
 
-          <span
-            className="
-              text-[6px]
-              uppercase
-              tracking-[0.28em]
-              text-white/20
-            "
-          >
-            01 — 04
-          </span>
+          {/* RIGHT META */}
+
+          <div className="flex flex-col items-end gap-1">
+            <span
+              className="
+                text-[6px]
+                uppercase
+                tracking-[0.28em]
+                text-[#A48C45]/55
+              "
+            >
+            </span>
+
+            <span
+              className="
+                text-[6px]
+                uppercase
+                tracking-[0.18em]
+                text-white/20
+              "
+            >
+              Creative Systems
+            </span>
+          </div>
         </motion.div>
       </div>
     </section>

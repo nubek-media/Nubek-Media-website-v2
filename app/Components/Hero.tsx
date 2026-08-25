@@ -1,360 +1,528 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
-  const [intro, setIntro] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIntro(false);
-    }, 2400);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-[#021D26] text-[#F5F5F3]">
-
+    <section
+      className="
+        relative
+        min-h-[calc(100svh-72px)]
+        overflow-hidden
+        bg-[#021D26]
+        text-[#F5F5F3]
+      "
+    >
       {/* =====================================================
-          INTRO — THE NUBEK MARK
-      ====================================================== */}
-
-      <AnimatePresence>
-        {intro && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.65,
-              ease,
-            }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#021D26]"
-          >
-            {/* Outer expanding ring */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.4,
-              }}
-              animate={{
-                opacity: [0, 0.8, 0],
-                scale: [0.4, 1.35, 1.65],
-              }}
-              transition={{
-                duration: 2,
-                ease: "easeOut",
-              }}
-              className="absolute h-40 w-40 rounded-full border border-[#A48C45]/40 sm:h-52 sm:w-52"
-            />
-
-            {/* Second ring */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.5,
-              }}
-              animate={{
-                opacity: [0, 0.5, 0],
-                scale: [0.5, 1.15, 1.45],
-              }}
-              transition={{
-                delay: 0.25,
-                duration: 1.7,
-                ease: "easeOut",
-              }}
-              className="absolute h-28 w-28 rounded-full border border-white/10 sm:h-36 sm:w-36"
-            />
-
-            {/* Actual logo */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.45,
-                rotate: -12,
-              }}
-              animate={{
-                opacity: 1,
-                scale: [0.45, 1, 0.88],
-                rotate: 0,
-              }}
-              transition={{
-                duration: 1.35,
-                ease,
-                times: [0, 0.7, 1],
-              }}
-              className="relative z-10 h-32 w-32 sm:h-44 sm:w-44"
-            >
-              <Image
-                src="/logo.png"
-                alt="Nubek"
-                fill
-                priority
-                className="object-contain"
-              />
-            </motion.div>
-
-            {/* Gold pulse */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1, 2.5],
-              }}
-              transition={{
-                delay: 0.8,
-                duration: 1.1,
-                ease: "easeOut",
-              }}
-              className="absolute h-2 w-2 rounded-full bg-[#A48C45]"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* =====================================================
-          MAIN NAV
-      ====================================================== */}
-
-      <header className="absolute left-0 right-0 top-0 z-50 px-5 pt-5 sm:px-8 sm:pt-7">
-        <div className="flex items-center justify-between">
-
-          {/* Small logo */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.6,
-            }}
-            animate={{
-              opacity: intro ? 0 : 1,
-              scale: intro ? 0.6 : 1,
-            }}
-            transition={{
-              duration: 0.6,
-              ease,
-            }}
-            className="relative h-9 w-9"
-          >
-            <Image
-              src="/logo.png"
-              alt="Nubek"
-              fill
-              className="object-contain"
-            />
-          </motion.div>
-
-          {/* Menu */}
-          <motion.button
-            initial={{
-              opacity: 0,
-              y: -10,
-            }}
-            animate={{
-              opacity: intro ? 0 : 1,
-              y: intro ? -10 : 0,
-            }}
-            transition={{
-              duration: 0.6,
-              ease,
-            }}
-            type="button"
-            className="group flex items-center gap-3"
-          >
-            <span className="text-[9px] uppercase tracking-[0.25em] text-white/50">
-              Menu
-            </span>
-
-            <span className="relative flex h-8 w-8 items-center justify-center rounded-full border border-white/15 transition-colors duration-300 group-hover:border-[#A48C45]/60">
-              <span className="absolute h-px w-3 bg-[#A48C45]" />
-              <span className="absolute h-px w-3 rotate-90 bg-[#A48C45]" />
-            </span>
-          </motion.button>
-        </div>
-      </header>
-
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-
-      <main className="relative flex min-h-[100svh] items-center px-5 sm:px-10 lg:px-16">
-
-        <div className="mx-auto w-full max-w-[1440px]">
-
-          {/* Micro label */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: intro ? 0 : 1,
-              y: intro ? 15 : 0,
-            }}
-            transition={{
-              delay: intro ? 0 : 0.15,
-              duration: 0.7,
-              ease,
-            }}
-            className="mb-7"
-          >
-            <span className="text-[8px] uppercase tracking-[0.3em] text-white/30 sm:text-[10px]">
-              Creative Media Studio
-            </span>
-          </motion.div>
-
-          {/* =================================================
-              HEADLINE
-          ================================================= */}
-
-          <h1 className="text-[clamp(4rem,14vw,10rem)] font-semibold leading-[0.78] tracking-[-0.08em]">
-
-            <Reveal
-              show={!intro}
-              delay={0.15}
-            >
-              Ideas
-            </Reveal>
-
-            <Reveal
-              show={!intro}
-              delay={0.27}
-              className="pl-[10vw] text-white/90"
-            >
-              That Move
-            </Reveal>
-
-            <Reveal
-              show={!intro}
-              delay={0.39}
-              className="text-[#A48C45]"
-            >
-              Business.
-            </Reveal>
-
-          </h1>
-
-          {/* =================================================
-              DESCRIPTION
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 25,
-            }}
-            animate={{
-              opacity: intro ? 0 : 1,
-              y: intro ? 25 : 0,
-            }}
-            transition={{
-              delay: intro ? 0 : 0.7,
-              duration: 0.8,
-              ease,
-            }}
-            className="mt-10 flex flex-col gap-6 sm:mt-14 sm:flex-row sm:items-end sm:justify-between"
-          >
-            <p className="max-w-[370px] text-[12px] leading-6 text-white/40 sm:text-sm sm:leading-7">
-              We create brands, campaigns and digital experiences that move
-              people and business.
-            </p>
-
-            <Link
-              href="#work"
-              className="group flex w-fit items-center gap-3 text-[9px] uppercase tracking-[0.22em]"
-            >
-              <span>Explore our work</span>
-
-              <span className="text-lg text-[#A48C45] transition-transform duration-300 group-hover:translate-x-1">
-                ↗
-              </span>
-            </Link>
-          </motion.div>
-        </div>
-      </main>
-
-      {/* =====================================================
-          BOTTOM
-      ====================================================== */}
+          GOLDEN HALO
+      ===================================================== */}
 
       <motion.div
         initial={{
           opacity: 0,
+          scale: 0.7,
+          x: 70,
         }}
         animate={{
-          opacity: intro ? 0 : 1,
+          opacity: 1,
+          scale: 1,
+          x: 0,
         }}
         transition={{
-          duration: 0.7,
+          duration: 1.7,
+          delay: 0,
+          ease,
         }}
-        className="absolute bottom-5 left-5 right-5 z-40 flex items-center justify-between"
-      >
-        <span className="text-[8px] uppercase tracking-[0.25em] text-white/25">
-          Nubek / 01
-        </span>
+        className="
+          pointer-events-none
+          absolute
+          z-0
 
-        <motion.span
+          right-[-20%]
+          top-[7%]
+
+          h-[330px]
+          w-[330px]
+
+          rounded-full
+          bg-[#A48C45]/[0.11]
+          blur-[95px]
+
+          sm:right-[-10%]
+          sm:top-[7%]
+          sm:h-[430px]
+          sm:w-[430px]
+
+          lg:right-[-2%]
+          lg:top-[4%]
+          lg:h-[500px]
+          lg:w-[500px]
+          lg:blur-[115px]
+        "
+      />
+
+      {/* =====================================================
+          OPTICAL / CAMERA SYSTEM
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          z-[5]
+
+          right-[3%]
+          top-[20%]
+
+          h-[250px]
+          w-[250px]
+
+          sm:right-[6%]
+          sm:top-[19%]
+          sm:h-[300px]
+          sm:w-[300px]
+
+          md:right-[7%]
+          md:h-[340px]
+          md:w-[340px]
+
+          lg:right-[8%]
+          lg:top-[18%]
+          lg:h-[390px]
+          lg:w-[390px]
+
+          xl:right-[10%]
+          xl:h-[430px]
+          xl:w-[430px]
+        "
+      >
+        {/* =================================================
+            OUTER CIRCLE
+        ================================================= */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.75,
+            rotate: -15,
+          }}
           animate={{
-            y: [0, 5, 0],
+            opacity: 0.32,
+            scale: 1,
+            rotate: 0,
           }}
           transition={{
-            duration: 2,
+            duration: 1.4,
+            delay: 0,
+            ease,
+          }}
+          className="
+            absolute
+            inset-0
+            rounded-full
+
+            border
+            border-[#C7AD67]/40
+          "
+        />
+
+        {/* =================================================
+            MIDDLE CIRCLE — FILLED
+        ================================================= */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.45,
+          }}
+          animate={{
+            opacity: 0.52,
+            scale: 1,
+          }}
+          transition={{
+            duration: 1.15,
+            delay: 0.08,
+            ease,
+          }}
+          className="
+            absolute
+            left-1/2
+            top-1/2
+
+            h-[67%]
+            w-[67%]
+
+            -translate-x-1/2
+            -translate-y-1/2
+
+            rounded-full
+
+            bg-[#A48C45]/[0.13]
+
+            border
+            border-[#A48C45]/30
+
+            shadow-[0_0_80px_rgba(164,140,69,0.12)]
+          "
+        />
+
+        {/* =================================================
+            INNER CIRCLE
+        ================================================= */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.25,
+          }}
+          animate={{
+            opacity: 0.72,
+            scale: 1,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.16,
+            ease,
+          }}
+          className="
+            absolute
+            left-1/2
+            top-1/2
+
+            h-[35%]
+            w-[35%]
+
+            -translate-x-1/2
+            -translate-y-1/2
+
+            rounded-full
+
+            bg-[#A48C45]/30
+
+            shadow-[0_0_65px_rgba(164,140,69,0.18)]
+          "
+        />
+
+        {/* =================================================
+            SOFT OPTICAL BREATH
+        ================================================= */}
+
+        <motion.div
+          initial={{
+            scale: 0.94,
+            opacity: 0,
+          }}
+          animate={{
+            scale: [0.94, 1.025, 1],
+            opacity: [0, 0.18, 0.08],
+          }}
+          transition={{
+            duration: 4.5,
+            delay: 0.2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="text-[8px] uppercase tracking-[0.25em] text-white/25"
+          className="
+            absolute
+            inset-[17%]
+
+            rounded-full
+
+            bg-[#C7AD67]/[0.025]
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+
+          flex
+          min-h-[calc(100svh-72px)]
+          max-w-[1440px]
+          flex-col
+          justify-center
+
+          px-5
+          pb-20
+          pt-16
+
+          sm:px-10
+          sm:pb-20
+          sm:pt-16
+
+          lg:px-16
+          lg:pb-16
+          lg:pt-10
+        "
+      >
+        {/* =================================================
+            AGENCY LABEL
+        ================================================= */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 12,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0,
+            duration: 0.7,
+            ease,
+          }}
+          className="
+            relative
+            z-30
+            mb-6
+
+            flex
+            items-center
+            gap-3
+
+            sm:mb-7
+          "
         >
-          Scroll ↓
-        </motion.span>
-      </motion.div>
+          <span
+            className="
+              h-[5px]
+              w-[5px]
+              rounded-full
+              bg-[#A48C45]
+            "
+          />
+
+          <span
+            className="
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.28em]
+              text-white/40
+
+              sm:text-[9px]
+              sm:tracking-[0.32em]
+            "
+          >
+            Creative Advertising Agency
+          </span>
+        </motion.div>
+
+        {/* =================================================
+            HERO TYPOGRAPHY
+        ================================================= */}
+
+        <div
+          className="
+            relative
+            z-20
+
+            w-full
+            max-w-[920px]
+
+            lg:max-w-[900px]
+            xl:max-w-[980px]
+          "
+        >
+          <FocusLine
+            text="MAKE"
+            delay={0}
+          />
+
+          <FocusLine
+            text="THE"
+            delay={0.1}
+            indent
+          />
+
+          <FocusLine
+            text="UNSEEN"
+            delay={0.2}
+            gold
+          />
+
+          <FocusLine
+            text="SEEN."
+            delay={0.3}
+            indent
+          />
+        </div>
+
+        {/* =================================================
+            SUPPORTING COPY
+        ================================================= */}
+
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 16,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.65,
+            duration: 0.7,
+            ease,
+          }}
+          className="
+            relative
+            z-20
+
+            mt-8
+
+            max-w-[410px]
+
+            text-[10px]
+            leading-[1.8]
+            text-white/40
+
+            sm:mt-9
+            sm:text-[11px]
+
+            lg:mt-10
+            lg:text-[12px]
+            lg:leading-[1.85]
+          "
+        >
+          Creative strategy, branding, advertising and digital
+          experiences that turn overlooked ideas into things
+          people notice.
+        </motion.p>
+
+        {/* =================================================
+            BOTTOM META
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            delay: 0.85,
+            duration: 0.7,
+            ease,
+          }}
+          className="
+            absolute
+            bottom-5
+            left-5
+            right-5
+
+            sm:left-10
+            sm:right-10
+
+            lg:left-16
+            lg:right-16
+          "
+        >
+          <div className="flex flex-col gap-1">
+            <span
+              className="
+                text-[6px]
+                uppercase
+                tracking-[0.28em]
+                text-white/20
+              "
+            >
+              Nubek Media
+            </span>
+
+            <span
+              className="
+                text-[6px]
+                uppercase
+                tracking-[0.18em]
+                text-white/15
+              "
+            >
+              Strategy / Creative / Digital
+            </span>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
 
 /* ============================================================
-   TEXT REVEAL
+   RACK-FOCUS TYPOGRAPHY
 ============================================================ */
 
-function Reveal({
-  children,
+function FocusLine({
+  text,
   delay,
-  className = "",
-  show,
+  gold = false,
+  indent = false,
 }: {
-  children: React.ReactNode;
+  text: string;
   delay: number;
-  className?: string;
-  show: boolean;
+  gold?: boolean;
+  indent?: boolean;
 }) {
   return (
-    <motion.span
+    <motion.div
       initial={{
         opacity: 0,
-        y: 80,
-        clipPath: "inset(100% 0 0 0)",
+        scale: 1.1,
+        scaleX: 1.06,
+        filter: "blur(16px)",
+        letterSpacing: "0.15em",
+        y: 28,
+        x: -12,
       }}
       animate={{
-        opacity: show ? 1 : 0,
-        y: show ? 0 : 80,
-        clipPath: show
-          ? "inset(0% 0 0 0)"
-          : "inset(100% 0 0 0)",
+        opacity: 1,
+        scale: 1,
+        scaleX: 1,
+        filter: "blur(0px)",
+        letterSpacing: "-0.065em",
+        y: 0,
+        x: 0,
       }}
       transition={{
-        delay: show ? delay : 0,
-        duration: 1,
+        duration: 1.05,
+        delay,
         ease,
       }}
-      className={`block ${className}`}
+      className={`
+        origin-left
+        whitespace-nowrap
+        will-change-transform
+
+        font-semibold
+        leading-[0.87]
+        tracking-[-0.065em]
+
+        text-[clamp(2.9rem,14vw,5.1rem)]
+
+        sm:text-[clamp(4rem,10vw,6.2rem)]
+
+        lg:text-[clamp(4.6rem,6.2vw,6.4rem)]
+
+        xl:text-[clamp(5rem,6vw,6.8rem)]
+
+        ${gold ? "text-[#A48C45]" : "text-[#F5F5F3]"}
+
+        ${indent ? "ml-[6vw]" : ""}
+      `}
     >
-      {children}
-    </motion.span>
+      {text}
+    </motion.div>
   );
 }
