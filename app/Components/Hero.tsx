@@ -9,7 +9,7 @@ export default function Hero() {
     <section
       className="
         relative
-        min-h-[calc(100svh-72px)]
+        min-h-[calc(100svh-92px)]
         overflow-hidden
         bg-[#021D26]
         text-[#F5F5F3]
@@ -73,20 +73,21 @@ export default function Hero() {
           absolute
           z-[5]
 
-          right-[3%]
-          top-[20%]
+          right-[-7%]
+          top-[27%]
 
-          h-[250px]
-          w-[250px]
+          h-[190px]
+          w-[190px]
 
-          sm:right-[6%]
-          sm:top-[19%]
-          sm:h-[300px]
-          sm:w-[300px]
+          sm:right-[-3%]
+          sm:top-[24%]
+          sm:h-[240px]
+          sm:w-[240px]
 
-          md:right-[7%]
-          md:h-[340px]
-          md:w-[340px]
+          md:right-[4%]
+          md:top-[20%]
+          md:h-[320px]
+          md:w-[320px]
 
           lg:right-[8%]
           lg:top-[18%]
@@ -98,9 +99,7 @@ export default function Hero() {
           xl:w-[430px]
         "
       >
-        {/* =================================================
-            OUTER CIRCLE
-        ================================================= */}
+        {/* OUTER CIRCLE */}
 
         <motion.div
           initial={{
@@ -122,15 +121,12 @@ export default function Hero() {
             absolute
             inset-0
             rounded-full
-
             border
             border-[#C7AD67]/40
           "
         />
 
-        {/* =================================================
-            MIDDLE CIRCLE — FILLED
-        ================================================= */}
+        {/* MIDDLE CIRCLE */}
 
         <motion.div
           initial={{
@@ -168,9 +164,7 @@ export default function Hero() {
           "
         />
 
-        {/* =================================================
-            INNER CIRCLE
-        ================================================= */}
+        {/* INNER CIRCLE */}
 
         <motion.div
           initial={{
@@ -205,9 +199,7 @@ export default function Hero() {
           "
         />
 
-        {/* =================================================
-            SOFT OPTICAL BREATH
-        ================================================= */}
+        {/* SOFT OPTICAL BREATH */}
 
         <motion.div
           initial={{
@@ -227,9 +219,7 @@ export default function Hero() {
           className="
             absolute
             inset-[17%]
-
             rounded-full
-
             bg-[#C7AD67]/[0.025]
           "
         />
@@ -246,22 +236,22 @@ export default function Hero() {
           mx-auto
 
           flex
-          min-h-[calc(100svh-72px)]
+          min-h-[calc(100svh-92px)]
           max-w-[1440px]
           flex-col
           justify-center
 
           px-5
           pb-20
-          pt-16
+          pt-4
 
           sm:px-10
           sm:pb-20
-          sm:pt-16
+          sm:pt-5
 
           lg:px-16
           lg:pb-16
-          lg:pt-10
+          lg:pt-6
         "
       >
         {/* =================================================
@@ -404,7 +394,7 @@ export default function Hero() {
 
         {/* =================================================
             BOTTOM META
-        ===================================================== */}
+        ================================================= */}
 
         <motion.div
           initial={{
